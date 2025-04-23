@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Soil Contamination Prediction</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Soil Contamination Prediction</h2>
+        
+        <form action="/predict" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Nickel (Ni)</label>
+                    <input type="number" step="any" name="nickel" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label>Lead (Pb)</label>
+                    <input type="number" step="any" name="lead" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label>Chromium (Cr)</label>
+                    <input type="number" step="any" name="chromium" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label>Mercury (Hg)</label>
+                    <input type="number" step="any" name="mercury" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label>Cadmium (Cd)</label>
+                    <input type="number" step="any" name="cadmium" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label>Arsenic (As)</label>
+                    <input type="number" step="any" name="arsenic" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label>Copper (Cu)</label>
+                    <input type="number" step="any" name="copper" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label>Zinc (Zn)</label>
+                    <input type="number" step="any" name="zinc" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label>Sample Depth (cm)</label>
+                    <input type="number" step="any" name="sample_depth" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label>Latitude</label>
+                    <input type="number" step="any" name="latitude" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label>Longitude</label>
+                    <input type="number" step="any" name="longitude" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label>Soil Type</label>
+                    <select name="soil_type" class="form-control" required>
+                        <option value="Loamy">Loamy</option>
+                        <option value="Sandy">Sandy</option>
+                        <option value="Clay">Clay</option>
+                        <option value="Silty">Silty</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary mt-3">Predict Contamination</button>
+        </form>
+        
+        {% if prediction %}
+            <div class="alert alert-success mt-3">Predicted Contamination Level: {{ prediction }}</div>
+        {% endif %}
+        
+        {% if error %}
+            <div class="alert alert-danger mt-3">Error: {{ error }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
